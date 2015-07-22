@@ -6,4 +6,5 @@
     <string name="rated_movies">Most Rated</string>
     <string name="movie_title">Mooc MovieName for Testing</string>
     <string name="title_activity_movie_detail">MovieDetailActivity</string>
+    <string name="overview">Overview</string>
 </resources>

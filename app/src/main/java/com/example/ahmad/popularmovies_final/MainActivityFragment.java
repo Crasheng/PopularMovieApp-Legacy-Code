@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +30,7 @@ import java.util.ArrayList;
  */
 public class MainActivityFragment extends Fragment {
 
-    private static final String API_KEY = "";
+    private static final String API_KEY = "b980eff87da0a635d18c8bd29bad78b0";
     private final String MOVIES_PARC_KEY = "MOVIES_DATA";
     CardAdapter movie_adapter_data;
     FetchMoviesData fetch_task;
@@ -149,10 +148,6 @@ public class MainActivityFragment extends Fragment {
             ParseMoviesData.fillEachMovieData(movies_data);
             movie_adapter_data.clear();
             movie_adapter_data.addAll(movies_data);
-
-            Toast.makeText(getActivity(), "Fetching Movies", Toast.LENGTH_LONG).show();
-
-
         }
 
         @Override
