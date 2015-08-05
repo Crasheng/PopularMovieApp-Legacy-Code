@@ -4,6 +4,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 
+import com.example.ahmad.popularmovies_final.Data.AppDBHelper;
+import com.example.ahmad.popularmovies_final.Data.MoviesContract;
+
 import java.util.HashSet;
 
 /**
@@ -26,7 +29,7 @@ public class DBTest extends AndroidTestCase {
 
     public void testCreateDB() throws Throwable{
 
-        final HashSet<String> nameOfTablesInDB = new HashSet<>();
+        final HashSet<String> nameOfTablesInDB = new HashSet<String>();
         nameOfTablesInDB.add(MoviesContract.MoviesEntry.TABLE_NAME);
         nameOfTablesInDB.add(MoviesContract.ReviewsEntry.TABLE_NAME);
 
@@ -60,7 +63,7 @@ public class DBTest extends AndroidTestCase {
                 c.moveToFirst());
 
         // Build a HashSet of all of the column names we want to look for
-        final HashSet<String> movieColumnHashSet = new HashSet<>();
+        final HashSet<String> movieColumnHashSet = new HashSet<String>();
         movieColumnHashSet.add(MoviesContract.MoviesEntry._ID);
         movieColumnHashSet.add(MoviesContract.MoviesEntry.MOV_COL_ID);
         movieColumnHashSet.add(MoviesContract.MoviesEntry.MOV_COL_TITLE);

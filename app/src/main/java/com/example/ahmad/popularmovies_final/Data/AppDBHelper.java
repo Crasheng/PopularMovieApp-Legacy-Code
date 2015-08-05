@@ -1,11 +1,11 @@
-package com.example.ahmad.popularmovies_final;
+package com.example.ahmad.popularmovies_final.Data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.ahmad.popularmovies_final.MoviesContract.MoviesEntry;
-import com.example.ahmad.popularmovies_final.MoviesContract.ReviewsEntry;
+import com.example.ahmad.popularmovies_final.Data.MoviesContract.MoviesEntry;
+import com.example.ahmad.popularmovies_final.Data.MoviesContract.ReviewsEntry;
 
 /**
  * Created by Ahmad on 7/23/2015.
@@ -40,9 +40,9 @@ public class AppDBHelper extends SQLiteOpenHelper {
 
         final String SQL_CREATE_REVIEW_TABLE = "CREATE TABLE "+ ReviewsEntry.TABLE_NAME+
                 "("+ ReviewsEntry._ID   + " INTEGER PRIMARY KEY,"+
-                ReviewsEntry.MOVIE_ID   +" INTEGER NOT NULL, "+
-                ReviewsEntry.REV_COL_AUTHOR  +" TEXT NOT NULL,"+
-                ReviewsEntry.REV_COL_CONTENT +" TEXT NOT NULL,"+
+                ReviewsEntry.MOVIE_ID   + " INTEGER NOT NULL, "  +
+                ReviewsEntry.REV_COL_AUTHOR  + " TEXT NOT NULL," +
+                ReviewsEntry.REV_COL_CONTENT + " TEXT NOT NULL," +
                 "FOREIGN KEY("+ ReviewsEntry.MOVIE_ID+") REFERENCES "+ MoviesEntry.TABLE_NAME +" ( "+ ReviewsEntry.MOVIE_ID +"));";
 
         db.execSQL(SQL_CREATE_MOVIES_TABLE);

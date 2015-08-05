@@ -1,4 +1,4 @@
-package com.example.ahmad.popularmovies_final;
+package com.example.ahmad.popularmovies_final.Data;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -14,6 +14,7 @@ public class MoviesContract {
     public static final String CONTENT_AUTHORITY = "com.example.ahmad.popularmovies_final";
 
     //BASE URI CONTENT
+    //u can use it in the contentProviderClient class, to element some of framework work
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     //Name of the movie table
@@ -23,9 +24,13 @@ public class MoviesContract {
     public static final String PATH_REVIEW = "review";
 
 
+    //for changing operations
     public static final int MOVIES = 100;
+    //for query all movies based on the user preferred sort type
     public static final int MOVIES_STAGE_SORT = 101;
+    //for query all detail data of movie
     public static final int MOVIE_DETAIL = 102;
+    //for changing operations on review table
     public static final int REVIEWS = 300;
 
 
@@ -41,11 +46,15 @@ public class MoviesContract {
         public static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_MOVIE;
 
+        public static final String POPULARITY_SORT_TYPE = "popularity.desc";
+        public static final String Vote_Ave_SORT_TYPE = "vote_average.desc";
+
+
         //table name
         public static final String TABLE_NAME = "movie";
 
         //columns names
-        public static final String MOV_COL_ID = "movie_id";
+        public static final String MOV_COL_ID = "umovie_id";
         public static final String MOV_COL_TITLE = "movie_title";
         public static final String MOV_COL_OVERVIEW = "movie_overview";
         public static final String MOV_COL_FAVORITE = "movies_favorite";
@@ -57,16 +66,25 @@ public class MoviesContract {
         public static final String MOV_COL_RELEASE_DATE = "movie_release_date";
         public static final String MOV_COL_VOTE_AVE = "movie_vote_ave";
 
+
+
+        //get the movie detail uri, by populate the  movie has been selected
+        public static Uri buildMovieWithUniIdUri(long umovie_id)
+        {
+            return CONTENT_URI.buildUpon().appendQueryParameter(MOV_COL_ID, String.valueOf(umovie_id)).build();
+        }
+
+        //BUILD URI for fetching movies with specific sorting type
+        public  static Uri buildMovieWithSortUri( String sort_type)
+        {
+            return CONTENT_URI.buildUpon().appendPath(sort_type).build();
+        }
+
         //Build URI FOR GET MOVIE WITH ID.
         public static Uri buildMovieWithIdUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
-        //BUILD URI for fetching movies with spcifie sorting type
-        public  static Uri buildMovieWithSortUri(String sort_type)
-        {
-            return CONTENT_URI.buildUpon().appendPath(sort_type).build();
-        }
     }
 
     public static final class ReviewsEntry implements  BaseColumns {

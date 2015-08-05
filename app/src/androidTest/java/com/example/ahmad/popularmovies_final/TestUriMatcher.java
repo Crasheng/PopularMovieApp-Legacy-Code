@@ -5,7 +5,9 @@ import android.net.Uri;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
-import com.example.ahmad.popularmovies_final.MoviesContract.MoviesEntry;
+import com.example.ahmad.popularmovies_final.Data.MovieProvider;
+import com.example.ahmad.popularmovies_final.Data.MoviesContract;
+import com.example.ahmad.popularmovies_final.Data.MoviesContract.MoviesEntry;
 
 /**
  * Created by Ahmad on 8/3/2015.

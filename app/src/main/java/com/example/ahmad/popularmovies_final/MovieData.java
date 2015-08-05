@@ -27,7 +27,7 @@ public class MovieData implements Parcelable {
     private String movie_poster;
     private String movie_overview;
     private String movie_backdrop;
-    private float movie_averagevote;
+    private float movie_ave_vote;
     private String movie_release_date;
 
 
@@ -44,7 +44,7 @@ public class MovieData implements Parcelable {
         movie_id = in.readInt();
         movie_title = in.readString();
         movie_poster = in.readString();
-        movie_averagevote = in.readFloat();
+        movie_ave_vote = in.readFloat();
         movie_overview = in.readString();
         movie_backdrop = in.readString();
         movie_release_date = in.readString();
@@ -87,7 +87,7 @@ public class MovieData implements Parcelable {
     }
 
     public MovieData averagevote(float vote_average) {
-        this.movie_averagevote = vote_average;
+        this.movie_ave_vote = vote_average;
         return this;
     }
 
@@ -116,7 +116,7 @@ public class MovieData implements Parcelable {
     }
 
     public float getMovieRating() {
-        return movie_averagevote;
+        return movie_ave_vote;
     }
 
     @Override
@@ -129,7 +129,7 @@ public class MovieData implements Parcelable {
         dest.writeInt(movie_id);
         dest.writeString(movie_title);
         dest.writeString(movie_poster);
-        dest.writeFloat(movie_averagevote);
+        dest.writeFloat(movie_ave_vote);
         dest.writeString(movie_overview);
         dest.writeString(movie_backdrop);
         dest.writeString(movie_release_date);

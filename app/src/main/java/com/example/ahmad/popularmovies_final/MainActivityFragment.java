@@ -33,9 +33,9 @@ public class MainActivityFragment extends Fragment {
     private static final String API_KEY = "b980eff87da0a635d18c8bd29bad78b0";
     private final String MOVIES_PARC_KEY = "MOVIES_DATA";
     CardAdapter movie_adapter_data;
-    FetchMoviesData fetch_task;
+
     //Variable to hold what returned from fetched data
-    ArrayList<MovieData> movies_data = new ArrayList<>();
+    ArrayList<MovieData> movies_data = new ArrayList<MovieData>();
     private String arrangement_flag = "popularity.desc";
 
     public MainActivityFragment() {
@@ -80,7 +80,7 @@ public class MainActivityFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 //Array List of Parcable objects to be passed to new Activity
-                ArrayList<MovieData> clicked_item_list = new ArrayList<>();
+                ArrayList<MovieData> clicked_item_list = new ArrayList<MovieData>();
 
                 //add the clicked item.
                 clicked_item_list.add((MovieData) (parent.getItemAtPosition(position)));
@@ -115,15 +115,11 @@ public class MainActivityFragment extends Fragment {
             case R.id.pop_movies:
                 item.setChecked(true);
                 arrangement_flag = "popularity.desc";
-                movies_data = null;
-                movies_data = new ArrayList<>();
                 new FetchMoviesData().execute(arrangement_flag);
                 return true;
             case R.id.most_rated:
                 item.setChecked(true);
                 arrangement_flag = "vote_count.desc";
-                movies_data = null;
-                movies_data = new ArrayList<>();
                 new FetchMoviesData().execute(arrangement_flag);
                 return true;
             default:
@@ -137,7 +133,6 @@ public class MainActivityFragment extends Fragment {
     * */
     class FetchMoviesData extends AsyncTask<String, Void, String> {
         int length;
-        ArrayList<MovieData> movie_data;
 
         @Override
         protected void onPostExecute(String s) {

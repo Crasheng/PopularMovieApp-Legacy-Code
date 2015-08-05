@@ -1,4 +1,4 @@
-package com.example.ahmad.popularmovies_final;
+package com.example.ahmad.popularmovies_final.Data;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -57,7 +57,7 @@ public class MovieProvider extends ContentProvider {
         * Try to flip the 2nd and 3rd statement around and the test fails
         * */
         matcher.addURI(authority, "/"+MoviesContract.PATH_MOVIE, MoviesContract.MOVIES);
-        matcher.addURI(authority, "/"+MoviesContract.PATH_MOVIE + "/#", MoviesContract.MOVIE_DETAIL);
+        //matcher.addURI(authority, "/"+MoviesContract.PATH_MOVIE + "/#", MoviesContract.MOVIE_DETAIL);
         matcher.addURI(authority, "/"+MoviesContract.PATH_MOVIE + "/*", MoviesContract.MOVIES_STAGE_SORT);
         matcher.addURI(authority, "/"+MoviesContract.PATH_REVIEW, MoviesContract.REVIEWS);
         return matcher;
