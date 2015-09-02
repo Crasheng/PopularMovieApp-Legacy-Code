@@ -7,4 +7,10 @@
     <string name="movie_title">Mooc MovieName for Testing</string>
     <string name="title_activity_movie_detail">MovieDetailActivity</string>
     <string name="overview">Overview</string>
+    <string name="refresh">Refresh</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="dialog_fire_missiles">Missle</string>
+    <string name="fire">fire</string>
+    <string name="cancel">canel</string>
+    <string name="title_video_dialog">Choose Prefered Video</string>
 </resources>

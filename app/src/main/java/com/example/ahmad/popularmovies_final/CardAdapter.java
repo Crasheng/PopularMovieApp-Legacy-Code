@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
+import com.example.ahmad.popularmovies_final.POJOs.MovieData;
 import com.squareup.picasso.Picasso;
 
 import java.util.Collection;
@@ -21,6 +22,9 @@ import java.util.Collection;
  */
 public class CardAdapter extends ArrayAdapter<MovieData> {
 
+    class ViewHolder{
+        ImageView movie_poster;
+    }
     ViewHolder viewholder;
 
     public CardAdapter(Context context, int resource) {
@@ -51,10 +55,5 @@ public class CardAdapter extends ArrayAdapter<MovieData> {
         Picasso.with(getContext()).load(imagepath).placeholder(R.drawable.spinner).noFade().into(viewholder.movie_poster);
 
         return convertView;
-    }
-
-    @Override
-    public void addAll(Collection<? extends MovieData> collection) {
-        super.addAll(collection);
     }
 }

@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class TestUtilities extends AndroidTestCase {
 
-    private static final Integer TEST_MOVIE_ID = 49049;
+    public static final Integer TEST_MOVIE_ID = 49049;
 
     static void validateCursor(String error, Cursor valueCursor, ContentValues expectedValues) {
         assertTrue("Empty cursor returned. " + error, valueCursor.moveToFirst());
@@ -35,7 +35,7 @@ public class TestUtilities extends AndroidTestCase {
         }
     }
 
-    static ContentValues createMoviesValues(long MovieRowId) {
+    static ContentValues createMoviesValues() {
         ContentValues weatherValues = new ContentValues();
         weatherValues.put(MoviesContract.MoviesEntry.MOV_COL_ID, TEST_MOVIE_ID);
         weatherValues.put(MoviesContract.MoviesEntry.MOV_COL_TITLE, "baby");
@@ -55,7 +55,7 @@ public class TestUtilities extends AndroidTestCase {
     static ContentValues createReviewsValues() {
         // Create a new map of values, where column names are the keys
         ContentValues testValues = new ContentValues();
-        testValues.put(MoviesContract.ReviewsEntry.MOVIE_ID, TEST_MOVIE_ID);
+        testValues.put(MoviesContract.ReviewsEntry.RELATED_MOVIE, TEST_MOVIE_ID);
         testValues.put(MoviesContract.ReviewsEntry.REV_COL_AUTHOR, "Ahmed Adel");
         testValues.put(MoviesContract.ReviewsEntry.REV_COL_CONTENT, "Obaa 3ala l film dahhh");
 
