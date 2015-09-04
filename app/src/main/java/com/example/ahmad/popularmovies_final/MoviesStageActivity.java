@@ -15,7 +15,6 @@ import android.util.Log;
 public class MoviesStageActivity extends AppCompatActivity implements MoviesStageFragment.onMovieClick {
 
     public static String DF_TAG = "detail_fragment_tag";
-    public static long firstmovie_id ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
