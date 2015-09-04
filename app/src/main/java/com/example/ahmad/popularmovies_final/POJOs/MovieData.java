@@ -1,4 +1,4 @@
-package com.example.ahmad.popularmovies_final;
+package com.example.ahmad.popularmovies_final.POJOs;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -30,11 +30,6 @@ public class MovieData implements Parcelable {
     private float movie_ave_vote;
     private String movie_release_date;
 
-
-    //    public MovieData(int id, String t){
-//        movie_id = id;
-//        movie_title = t;
-//    }
     private String movie_original_title;
 
     public MovieData() {

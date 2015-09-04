@@ -12,7 +12,7 @@ import com.example.ahmad.popularmovies_final.Data.MoviesContract.ReviewsEntry;
  */
 public class AppDBHelper extends SQLiteOpenHelper {
 
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 8;
     public static final String DATABASE_NAME = "movie.db";
 
     public AppDBHelper(Context context){
@@ -40,10 +40,11 @@ public class AppDBHelper extends SQLiteOpenHelper {
 
         final String SQL_CREATE_REVIEW_TABLE = "CREATE TABLE "+ ReviewsEntry.TABLE_NAME+
                 "("+ ReviewsEntry._ID   + " INTEGER PRIMARY KEY,"+
-                ReviewsEntry.MOVIE_ID   + " INTEGER NOT NULL, "  +
+                ReviewsEntry.REVIEW_UNI_ID + " TEXT UNIQUE NOT NULL,"+
+                ReviewsEntry.RELATED_MOVIE + " INTEGER NOT NULL, "  +
                 ReviewsEntry.REV_COL_AUTHOR  + " TEXT NOT NULL," +
-                ReviewsEntry.REV_COL_CONTENT + " TEXT NOT NULL," +
-                "FOREIGN KEY("+ ReviewsEntry.MOVIE_ID+") REFERENCES "+ MoviesEntry.TABLE_NAME +" ( "+ ReviewsEntry.MOVIE_ID +"));";
+                ReviewsEntry.REV_COL_CONTENT + " TEXT NOT NULL" + ");";
+//                "FOREIGN KEY("+ ReviewsEntry.RELATED_MOVIE +") REFERENCES "+ MoviesEntry.TABLE_NAME +" ( "+ MoviesEntry.MOV_COL_ID +"));";
 
         db.execSQL(SQL_CREATE_MOVIES_TABLE);
         db.execSQL(SQL_CREATE_REVIEW_TABLE);
@@ -52,7 +53,8 @@ public class AppDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE" + MoviesEntry.TABLE_NAME + ";");
-        db.execSQL("DROP TABLE" + ReviewsEntry.TABLE_NAME + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + MoviesEntry.TABLE_NAME + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + ReviewsEntry.TABLE_NAME + ";");
+        onCreate(db);
     }
 }

@@ -34,7 +34,6 @@ public class MoviesContract {
     public static final int REVIEWS = 300;
 
 
-
     public static final class MoviesEntry implements BaseColumns {
 
         public static final Uri CONTENT_URI =
@@ -46,8 +45,8 @@ public class MoviesContract {
         public static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_MOVIE;
 
-        public static final String POPULARITY_SORT_TYPE = "popularity.desc";
-        public static final String Vote_Ave_SORT_TYPE = "vote_average.desc";
+
+        public static final String SORT_ORDER = " DESC ";
 
 
         //table name
@@ -55,17 +54,17 @@ public class MoviesContract {
 
         //columns names
         public static final String MOV_COL_ID = "umovie_id";
-        public static final String MOV_COL_TITLE = "movie_title";
-        public static final String MOV_COL_OVERVIEW = "movie_overview";
-        public static final String MOV_COL_FAVORITE = "movies_favorite";
-        public static final String MOV_COL_POPULARITY = "movie_popularity";
-        public static final String MOV_COL_VOTE_COUNTS = "movie_vote_counts";
-        public static final String MOV_COL_ORIGINAL_TITLE = "movie_original_title";
-        public static final String MOV_COL_POSTER = "movie_poster";
-        public static final String MOV_COL_BACKDROP = "movie_backdrop";
-        public static final String MOV_COL_RELEASE_DATE = "movie_release_date";
-        public static final String MOV_COL_VOTE_AVE = "movie_vote_ave";
-
+        public static final String MOV_COL_TITLE = "title";
+        public static final String MOV_COL_OVERVIEW = "overview";
+        public static final String MOV_COL_FAVORITE = "favorite";
+        public static final String MOV_COL_POPULARITY = "popularity";
+        public static final String MOV_COL_VOTE_COUNTS = "vote_count";
+        public static final String MOV_COL_ORIGINAL_TITLE = "original_title";
+        public static final String MOV_COL_POSTER = "poster_path";
+        public static final String MOV_COL_BACKDROP = "backdrop_path";
+        public static final String MOV_COL_RELEASE_DATE = "release_date";
+        public static final String MOV_COL_VOTE_AVE = "vote_average";
+        public static final String LIMIT = "20";
 
 
         //get the movie detail uri, by populate the  movie has been selected
@@ -75,7 +74,7 @@ public class MoviesContract {
         }
 
         //BUILD URI for fetching movies with specific sorting type
-        public  static Uri buildMovieWithSortUri( String sort_type)
+        public  static Uri buildMovieWithSortUri(String sort_type)
         {
             return CONTENT_URI.buildUpon().appendPath(sort_type).build();
         }
@@ -102,13 +101,14 @@ public class MoviesContract {
         public static final String TABLE_NAME = "review";
 
         //tables columns name
-        public static final String REV_COL_AUTHOR = "review_author";
-        public static final String REV_COL_CONTENT = "review_content";
-        public static final String MOVIE_ID = "movie_id";
+        public static final String REV_COL_AUTHOR = "author";
+        public static final String REV_COL_CONTENT = "content";
+        public static final String RELATED_MOVIE = "related_movie_id";
+        public static final String REVIEW_UNI_ID = "review_uni_id";
 
-        public static Uri buildReviewUri(long id)
+        public static Uri buildMovieReviewsUri(String id)
         {
-            return ContentUris.withAppendedId(CONTENT_URI, id);
+            return CONTENT_URI.buildUpon().appendQueryParameter(ReviewsEntry.RELATED_MOVIE, id).build();
         }
 
         public static Uri buildReviewWithMovieId(long movie_id)
